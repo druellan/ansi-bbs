@@ -1,0 +1,24 @@
+[0m[2J [1;44m Using GEdit:  Keyboard Reference Chart                                       [0m
+
+  [1mCtl-A [36m(^Left)  [0mWord Left[14C[1mCtl-N[10C[0mToggle Line Drawing
+  [1mCtl-B[10C[0mCenter Line[12C[1mCtl-O [36m(ESC)    [0mCommand Menu
+  [1mCtl-C [36m(PgDn)   [0mPage Down[14C[1mCtl-P [36m(End)    [0mCursor End Of Line
+  [1mCtl-D [36m(Right)  [0mCursor Right[11C[1mCtl-Q[10C[0mOpen Quote Window
+  [1mCtl-E [36m(Up)     [0mCursor Up[14C[1mCtl-R [36m(PgUp)   [0mPage Up
+  [1mCtl-F [36m(^Right) [0mWord Right[13C[1mCtl-S [36m(Left)   [0mCursor Left
+  [1mCtl-G [36m(Del)    [0mDelete Current Char    [1mCtl-T[10C[0mDelete Right Word
+  [1mCtl-H [36m(Back)   [0mDelete Char To Left    [1mCtl-U[10C[0mInsert Line From Scrap
+  [1mCtl-I [36m(Tab)    [0mMove To Next Tabstop   [1mCtl-V [36m(INS)    [0mToggle Insert Mode
+  [1mCtl-J[10C[0mSearch For String[6C[1mCtl-W [36m(Home)   [0mCursor Beginning Of Line
+  [1mCtl-K[10C[0mClose Quote Window     [1mCtl-X [36m(Down)   [0mCursor Down
+  [1mCtl-L[10C[0mRedraw Screen[10C[1mCtl-Y [36m(AltD)   [0mDelete Line To Scrap
+  [1mCtl-M [36m(Enter)  [0mMove To Next Line[6C[1mCtl-Z [36m(ESC,S)  [0mSave Message
+
+[8C[1;36m(^PgUp)  [0mBeginning Of Message[9C[1;36m(^Home)  [0mTop Line Of Window
+[8C[1;36m(^PgDn)  [0mEnd Of Message[15C[1;36m(^End)   [0mErase to End of Line
+
+
+
+
+ [0;34mออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ
+  [1;37mPress [[33mEnter[37m] to continue.[0m

@@ -1,0 +1,167 @@
+:HELP
+You may use the HELP command to obtain either a listing of available
+commands or to get a brief summary of a command. To get a listing of
+commands, type "HELP" by itself. To get help on a specific command,
+type "HELP (command name)". For example, "HELP DIR" would get you
+help on the DIR COMMAND.
+:ATTRIB
+The ATTRIB command may be used to view or change the attributes a file
+or series of files. The syntax is as follows:
+
+    ATTRIB [+-r +-h +-s +-a] FileSpec
+
+    (R=Read only, H=Hidden, S=System, A=Archive)
+:CD
+The CD (or CHDIR) command is used to change the current directory. For
+example, typing "CHDIR \DOWNLOADS" would switch you to the \DOWNLOADS
+directory (providing you have one). You can also type "CHDIR" by itself
+to get the name of the current directory.
+:CHDIR
+The CD (or CHDIR) command is used to change the current directory. For
+example, typing "CHDIR \DOWNLOADS" would switch you to the \DOWNLOADS
+directory (providing you have one). You can also type "CHDIR" by itself
+to get the name of the current directory.
+:CLS
+CLS will clear the SDOS window.
+:COPY
+COPY is a powerful command that lets you copy files from one location
+to another. There are two forms of copy supported by SDOS:
+
+    COPY <source file> <dest file>        - Copy a single file
+    COPY CON <dest file>                  - Copy keyboard output to file
+
+If you use the "COPY CON" format, all keyboard output will be sent to the
+file until you send a CTRL-Z character.
+:D:
+"d:" designates a drive letter. For example, typing "A:" would switch you
+to drive a, typing "B:" would switch you to drive b, etc.
+:DEL
+The DEL (or ERASE) command allows you to delete a file or series of files.
+DEL accepts one parameter which is the filespec (wild card allowed) of the
+file(s) you wish to delete. You will be prompted before the erasure is made
+to make sure you wish to delete the files.
+:DELNUL
+DELNUL is a special command that will delete zero-length files. It accepts the
+same parameters as DEL, but will only files that have a size of 0 bytes.
+Occasionally, some programs (such as file transfer protocols) may leave zero
+length files laying around. This command gets rid of them.
+:DIR
+The DIR command will list the files in a certain directory. Typed by itself
+{i.e. "DIR"), the DIR command will list the files in the current directory.
+You may also specify a directory name (i.e. "DIR C:\TURBO") or a file mask
+(i.e. "DIR *.PAS") or both (i.e. "DIR C:\TURBO\*.PAS"). Specifying the
+/P option will cuase the directory to pause after each screen and
+specifying the /W option will display a wide directory. The "/T" option
+may be used to display the TRANSFER TIME of each file.
+:ERASE
+The DEL (or ERASE) command allows you to delete a file or series of files.
+DEL accepts one parameter which is the filespec (wild card allowed) of the
+file(s) you wish to delete. You will be prompted before the erasure is made
+to make sure you wish to delete the files.
+:FREE
+The FREE command will display the free space on a drive. Typed by itself,
+FREE will display the amount of space on the current drive. By specifying
+a drive letter, FREE will display the amount of free space on that
+drive.
+:MD
+The MKDIR (or MD) command will allow you to create a subdirectory. The
+subdirectory created will be a subdirectory of your current working
+directoriy unless you specify otherwise. MKDIR accepts one parameter
+which is the directory name/path.
+:MKDIR
+The MKDIR (or MD) command will allow you to create a subdirectory. The
+subdirectory created will be a subdirectory of your current working
+directoriy unless you specify otherwise. MKDIR accepts one parameter
+which is the directory name/path.
+:REN
+The REN (or RENAME) command will let you rename and/or move files. Unlike
+dos, you can rename across subdirectory - in effect, moving the file.
+REN takes two parameters, a source and a destination file name.
+:RENAME
+The REN (or RENAME) command will let you rename and/or move files. Unlike
+dos, you can rename across subdirectory - in effect, moving the file.
+REN takes two parameters, a source and a destination file name.
+:RMDIR
+The RMDIR (or RD) command will let you remove a sub-directory. To do this,
+there may be no files or subdirectories located within the subdirectory
+you wish to remove. RMDIR takes one parameter, the name/path of the
+subdirectory.
+:RD
+The RMDIR (or RD) command will let you remove a sub-directory. To do this,
+there may be no files or subdirectories located within the subdirectory
+you wish to remove. RMDIR takes one parameter, the name/path of the
+subdirectory.
+:SIZE
+The SIZE command will display a tally of the number of files, bytes
+contained in the files, and the space that would be consumed on a floppy
+drive and a hard drive (2048 byte cluster assumed).
+:TYPE
+The TYPE command allows you to display a file in the SDOS window. The file
+may be ascii or binary and will be displayed one page at a time. You will
+be promped between pages  to continue or stop. The TYPE command accepts
+one numeric parameter which is the filename to display.
+:ZIPVIEW
+This command will display the file directory of a zip file. The syntax
+is ZIPVIEW followed by the name of the zip file you wish to view. (i.e.
+ZIPVIEW THISZIP.ZIP".
+:DEBUG
+DEBUG is a watered-down version of the MSDOS program. With debug, you may
+view a binary/ascii file in hexadecimal format. Unlike the MSDOS debug,
+you may not make changes to the file. Typing "H" at the debug prompt will
+get you a quick command summary.
+:BROWSE
+BROWSE is a view browser that will allow you to display a file and use the
+arrow keys to scroll up and down within that file. It is similar to TYPE,
+but you can move backwards as well as forwards.
+:PORTSPEED
+This sets the default com port and baud rate that SZMODEM will use. As with
+all options in this configuration program, these are only defaults and may
+be overridden with the following command lines options:
+        PORT x     - Sets com port
+        SPEED x    - Sets baud rate
+:FOSSIL
+Some BBS programs use a FOSSIL driver in an attempt to standardize their
+async communications. Toggling this option to ON will cause this SZModem
+use the FOSSIL driver instead of SZModem's internal com routines.
+:DORINFO
+If your bbs produces a DORINFOx.DEF file when a user logs on, you may use
+this option to allow SZModem to grab the user's name and city and display
+it on the screen during transfers. (See SZMODEM.DOC for more info)
+:INSIZE
+This will set the input buffer size. The input buffer stores characters after
+they are read in from the modem until SZModem can process them. Note: Since
+the FOSSIL drivers have fixed buffer sizes, this option only works with
+the INTERNAL com routines.
+:OUTSIZE
+This will set the output buffer size. The output buffer buffers characters
+that SZMODEM sends out the com port. NOTE: Since the FOSSIL drivers have
+fixed buffer sizes, this option only works with the INTERNAL com routines.
+:SZPATH
+The SZPATH option allows you to specify a path that the SZXFER$$.LST,
+SZMODEM.LOG, and other misc. SZModem files will be placed in.
+:DELAYTIME
+By default, SZModem will pause a few seconds after a transfer is completed
+to allow the user/sysop to view the file lists, chat, etc. This option sets
+how long SZModem will delay.
+:SZTURBO
+The SZTURBO option enables a special mode of SZModem designed to increase
+transfer efficiency. Please see SZMODEM.DOC for more information.
+:CHECKSNOW
+This option will enabled snow checking on monitors that require it. Snow
+checking does slow down screen display, so only toggle this on if
+necessary.
+:EGAVGA
+This option will enable the 43/50 line enhanced screen modes if you have an
+EGA or VGA display.
+:NOLOG
+By default, SZModem will create a special log file for use by the sysop. This
+option will turn the log file on/off.
+:NOPAGE
+Remote users normally are allowed to page the sysop during chat mode. This
+option can be used to disable that paging capability.
+:DORINFOPATH
+This option will set the path to your DORINFOx.DEF file if you use one.
+If your bbs software does not generate a DORINFOx.DEF, then you probably do
+not need this option. (See SZMODEM.DOC for more info)
+
+

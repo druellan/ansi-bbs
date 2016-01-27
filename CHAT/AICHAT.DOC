@@ -1,0 +1,416 @@
+AICHAT.DOC                                                   Page 1 of 8
+
+
+
+
+
+                 **************************************
+                 *                                    *
+                 *             AICHAT.EXE             *
+                 *                                    *
+                 *     Created 23/07/90 by Avatar     *
+                 * Sysop of S.I.G. BBS +61-3-888-8846 *
+                 *                                    *
+                 *      Ver 2.2 written 29/10/90      *
+                 *    (c) 1990 Serious Cybernetics    *
+                 *                                    *
+                 **************************************
+
+
+
+
+
+                           Table of Contents
+                           ~~~~~~~~~~~~~~~~~
+
+         Table of Contents  . . . . . . . . . . . . . . . . . 1
+
+         Legal Notice . . . . . . . . . . . . . . . . . . . . 2
+
+         Introduction . . . . . . . . . . . . . . . . . . . . 2
+
+         Installation . . . . . . . . . . . . . . . . . . . . 3
+
+         Status Line  . . . . . . . . . . . . . . . . . . . . 4
+
+         Local Commands . . . . . . . . . . . . . . . . . . . 4
+
+         Control Characters . . . . . . . . . . . . . . . . . 4
+
+         Entering AIchat  . . . . . . . . . . . . . . . . . . 5
+
+         Sysop Hours  . . . . . . . . . . . . . . . . . . . . 5
+
+         Exiting AIchat . . . . . . . . . . . . . . . . . . . 5
+
+         Customising AIchat . . . . . . . . . . . . . . . . . 6
+
+         The AI algorithm . . . . . . . . . . . . . . . . . . 7
+
+         Colours  . . . . . . . . . . . . . . . . . . . . . . 8
+
+         Technical Notes  . . . . . . . . . . . . . . . . . . 8
+
+         Future Enhancements  . . . . . . . . . . . . . . . . 8
+
+
+AICHAT.DOC                                                   Page 2 of 8
+
+Legal Notice
+~~~~~~~~~~~~
+
+This program is Shareware.  You may distribute it as widely as you wish.
+You may not modify AICHAT.EXE or this file AICHAT.DOC in any way, nor
+may you omit either file or the sample AICHAT.AI file.  You may not
+include any other files as part of the AIchat distribution package, and
+you may not charge more than a fair and reasonable copying fee.  If you
+continue using this program on an ongoing basis after having tested it,
+you must send $10 (A$20 if outside Australia) or more to the address at
+the end of this documentation.  You will recieve a disk containing the
+latest version of the program and a selection of other Freeware and
+Shareware software from Serious Cybernetics.  Please specify the size
+and shape of disk you require when ordering.  No warranty of any kind is
+expressed or implied, and the author will not be held liable for any
+damages, consequential or otherwise, caused by the use, misuse or abuse
+of this program.  We told you the rules, now don't forget them!  Failure
+to abide by these terms constitutes a breach of copyright law.  Nyaah!
+
+
+
+Introduction
+~~~~~~~~~~~~
+
+AIchat came about because I was unimpressed by the existing "robot
+sysops", most of which appeared to be based on Eliza.  Joseph Weizenbaum
+wrote Eliza to simulate a Rogerian psychologist, not a sysop, and unless
+you know any sysops who believe in practising Rogerian psychology on
+their users, I don't find it a very convincing simulation.  I decided to
+set about writing a program that would be more interesting to chat to.
+
+The underlying paradigm of AIchat is that it simulates a sysop, who has
+a "train of thought" (or CURRENT TOPIC) at any given time and will
+endeavour to involve the user in a discussion.  However, if the user
+changes topics or mentions something upon which AIchat can make a witty
+remark, it will happily do so.  After somewhere between 2 and 12 minutes
+or when it can no longer find any topics of interest to discuss with the
+user, it will "get bored" and make an excuse to leave.
+
+AIchat is programmed to make a few typing mistakes from time to time in
+order to simulate a human typist.  There is a 50:1 chance on any given
+phrase that it will forget to use the shift key and type everything in
+lowercase.  There is also a 50:1 chance on any given character that it
+will accidentally make a typo, either by typing the wrong character
+altogether or by getting two adjacent characters reversed, and a 10:1
+chance that it won't notice and will fail to correct the mistake.
+
+AICHAT.DOC                                                   Page 3 of 8
+
+Installation
+~~~~~~~~~~~~
+
+AIchat is designed to work with all bulletin board software.  It does
+not require access to any files maintained by the BBS, but multi-user
+operation is not currently supported and may cause problems with the
+AICHAT.LOG log file created by the program.  However, it was designed
+under Remote Access, and currently mimics the RA internal chat routines.
+
+For a summary of the command line parameters, run AICHAT.  This will
+produce the following usage guide:
+
+Usage:   AICHAT {options ...} <username> {options ...}
+
+Options: /<baud>  where <baud> = 0 for local
+         /<port>  where <port> = 1 to 4
+         /G<ANSI> where <ANSI> = 0 or 1
+         /A       => auto AI chat (no yell)
+         /C       => sysop initiated chat
+
+To test AIchat locally, the only parameter required is your name, since
+AIchat defaults to local operation with ANSI colour enabled.  A baud
+rate other than zero will enable remote operation using the specified
+communications port.  It is a fatal error to specify a non-initialised,
+disconnected or otherwise invalid port since AIchat assumes that a user
+is already online and makes no attempt to check that the port is
+operational.
+
+The /G or /G0 parameter will disable ANSI colour and use only standard
+ASCII text.  The /A parameter indicates that AIchat was invoked by the
+user as an AI program and not to chat to the sysop, and will start the
+program in AI mode.  The /C parameter indicates that AIchat was invoked
+by the sysop as a normal chat program and not by the user, and will
+start the program in chat mode.  If either of these parameters is used
+AIchat will not attempt to attract the sysop's attention, so ensure you
+never allow the /C parameter to be invoked by users.
+
+The use of a FOSSIL (Fido-Opus-Seadog Standard Interface Layer)
+communications driver such as David Nugent's BNU or Ray Gwinn's X00 is
+highly recommended when using AIchat remotely, especially at speeds of
+2400 BPS and higher.  Characters are unlikely to be lost at normal
+typing speeds, but if macros are used at the higher speeds they are very
+likely to lose characters if a FOSSIL is not used.  AIchat will
+automatically detect the presence of a FOSSIL.
+
+A sample RA menu Type 7 invocation is:
+
+AICHAT.EXE /*P /*B /G*G *F *L *!*#*M
+
+Where *P and *B pass the communications port and baud rate respectively,
+*G passes 1 if ANSI is supported and 0 if not, *F and *L pass the first
+and last portions of the name of the current user, *! freezes the BBS
+timer for the duration of AIchat so the user doesn't lose time if
+chatting to the real sysop, *# turns off the "Want Chat" indicator since
+the user has achieved a chat session, and *M activates the MemorySwap
+feature to leave as much RAM as possible free for AIchat.
+
+AICHAT.DOC                                                   Page 4 of 8
+
+Status Line
+~~~~~~~~~~~
+
+While AIchat is running a status line will be displayed on the bottom
+line of the screen in reverse video.  From left to right, the status
+line gives the following information:
+
+* The version number of this release of AIchat
+* LOCAL or the current communication port and baud rate
+* The current user's full name (if known)
+* LOG if AIchat is currently logging the chat to AICHAT.LOG
+* THINK if AIchat is currently "thinking aloud"
+* The time left until AIchat "gets bored", or [CHATTING]
+
+
+
+Local Commands
+~~~~~~~~~~~~~~
+
+The following local commands are currently provided by AIchat:
+
+Alt-A   AI mode
+Alt-C   Chat mode
+Alt-J   Jump to DOS
+Alt-L   Logging toggle
+Alt-T   "Thinking aloud" toggle
+PageUp  Add one minute to chat time
+PageDn  Subtract one minute from chat time
+Escape  Terminate chat and exit program.
+
+Using Alt-A and Alt-C to change modes is totally invisible to the user,
+so you can break into AIchat either to converse with a user yourself or
+just long enough to insert your own witty remarks!
+
+
+
+Control Characters
+~~~~~~~~~~~~~~~~~~
+
+The following control characters are currently supported by AIchat:
+
+Crtl-G  Bell            (does not ring at local console
+                         if typed by remote user in AI mode)
+Ctrl-H  Backspace       (will not backspace beyond first column)
+Ctrl-I  Tab             (uses standard 8 character tab stops)
+Ctrl-J  Line Feed       (scrolls at bottom of screen)
+Ctrl-K  Reverse LF      (will not move beyond top of screen)
+Ctrl-L  Clear Screen
+Ctrl-M  Carriage Return
+Ctrl-N  Home Cursor     (moves cursor to top left corner)
+Ctrl-U  Cursor Forward  (will not move beyond last column)
+Ctrl-X  Cancel          (deletes the entire line)
+
+All escape sequences from the user except ANSI cursor movements are
+currently ignored.  The "arrow" cursor keys are fully supported and the
+Home and Ctrl-Home keys perform Ctrl-N and Ctrl-L respectively.
+
+AICHAT.DOC                                                   Page 5 of 8
+
+Entering AIchat
+~~~~~~~~~~~~~~~
+
+When AIchat is invoked, unless the /A or /C parameters were used, you
+will be greeted by the copyright notice and the following message:
+
+Yelling at Sysop ...
+Press ALT-C to chat, ESC to abort
+
+At this point you can do nothing, in which case after a minute or two
+the program will automatically enter AI mode.  Alternatively, you can
+press Alt-C to enter chat mode, Escape to cancel the chat with the
+message "Sysop is not currently available", or any other key to proceed
+immediately to AI mode (useful if you don't intend to enter chat mode
+and want the sysop-summoning sounds stopped swiftly!)
+
+If the current user was using AIchat less than 5 minutes earlier, it
+will cancel the chat as if Escape had been pressed instead of proceeding
+to AI mode.  This prevents users from getting carried away and hogging
+the board (since chatting doesn't use up logon time) and lends some
+badly needed credibility to the program's excuses.
+
+
+
+Sysop Hours
+~~~~~~~~~~~
+
+The sysop is currently assumed to be available between the hours of 10am
+and 10pm.  This means that outside these hours, AIchat will not make
+sounds to attract the sysop's attention when the user requests a chat.
+The sysop may of course choose to answer the chat anyway if they are
+present, and AIchat will currently never tell the user "Sysop is not
+currently available" except in the circumstances outlined above.
+These hours are not currently customisable.
+
+
+
+Exiting AIchat
+~~~~~~~~~~~~~~
+
+When AIchat is in AI mode, any phrase containing the letters "BYE",
+"CIAO" or "ADIOS" will cause the program to say goodbye and exit.  These
+keywords are not currently customisable.  Some users have expressed
+difficulty with this, trying words like "quit" and "exit", but at this
+stage I find it more logical to support human ways of ending a
+conversation rather than computer ones.  In chat mode, the only way to
+exit is for the sysop to press Escape on the local keyboard.
+
+AICHAT.DOC                                                   Page 6 of 8
+
+Customising AIchat
+~~~~~~~~~~~~~~~~~~
+
+AIchat uses a file called AICHAT.AI to control AI mode.  If this file is
+not present or readable when AIchat is run, it will exit with the "Sysop
+is not currently available" message unless run with the /S parameter, in
+which case it will function in chat mode only.  This file is an ASCII
+text file and can be edited with any text editor of your choice in order
+to customise the way in which AI mode responds to user input.  If the
+file is too long for AIchat to process, it will use as much of it as
+possible and will log an error message showing the last topic or keyword
+it was able to read.
+
+AICHAT.AI is structured as a list of TOPICS, each optionally containing
+a list of PHRASES and/or a list of groups of KEYWORDS, each optionally
+containing its own list of PHRASES.  A phrase may currently be up to 80
+characters long, while a topic or keyword is not case sensitive and may
+be any length, although currently only the first 10 characters are
+significant.  Underscores "_" in the topic or keyword will be treated as
+spaces, since actual spaces may be removed by some text editors,
+especially at the end of a line.
+
+A topic is signified by one or more blank lines followed by the name of
+the topic.  Every group of blank lines in the file therefore signifies
+the start of a new topic.  A group of keywords consists of one or more
+keywords on the same line separated by vertical bars "|".  A phrase
+consists of a line of text starting with a digit and a space.  The digit
+indicates the chance of using this phrase relative to any of the other
+phrases in this group.  A zero will result in the phrase being ignored
+by AIchat and may be used to temporarily disable an unwanted phrase.
+
+The first topic in the file is the default topic, and has no name.  This
+topic remains in effect until the first blank line in the file, which of
+course signifies the start of the next topic.  All phrases in the
+default topic will be used as random non-sequiturs when AIchat isn't
+discussing any particular topic and has no idea what the user is talking
+about.  All keywords in the default topic will not change the current
+topic under discussion when used.
+
+Topics and keywords will normally only match complete words or phrases.
+However, if the first or last character of a topic or keyword is an
+asterisk "*" it will also match any word or phrase beginning and/or
+ending in the specified topic or keyword.  For example, the keyword
+"eat" will not match the word "great", but the keyword "*eat" will.
+Neither keyword will match the word "greater", but the keywords "great*"
+and "*eat*" will.  The keyword "***" will match any asterisk!
+
+AICHAT.DOC                                                   Page 7 of 8
+
+The AI algorithm
+~~~~~~~~~~~~~~~~
+
+When AIchat processes user input, if there is a topic currently under
+discussion, it will first search for a keyword in that topic.  If not,
+or if no keyword is found, it will search all the topics to see if any
+of them were mentioned explicitly.  If so, that topic will be treated as
+the current keyword found.
+
+If no keyword has been found yet or a topic explicitly mentioned has no
+unused phrases left, all keywords in AICHAT.AI with unused phrases left
+will be searched in order of occurence.  If a keyword with no unused
+phrases left belonging to a topic which does have unused phrases left is
+found, that topic will be noted as an alternative.  If no other keyword
+is found, this alternative topic will become the current topic,
+otherwise the topic of the keyword found will become the current topic.
+
+If no keyword was found, a phrase in the current topic will be selected.
+If there are no unused phrases left in the current topic, or on a 3:1
+chance, the current topic will be dropped.  If no keyword was found and
+there is no current topic, there is a 10:1 chance of each topic with
+unused phrases left being chosen as the new current topic.
+
+Finally, if no keyword was found and there was no current topic, one of
+the unused phrases in the default topic will be selected; if there are
+none left unused, the program will make an excuse and exit.  If a
+keyword with unused phrases WAS found, one of those will be selected.
+
+If the selected phrase ends in a question mark "?", there is a 20:1
+chance that the user's first name will be appended to the question.  For
+example, "What's up?" will become "What's up, Doc?" if Doc is the
+current user.  If the user's first name is "The", their second name will
+be used instead.
+
+AICHAT.DOC                                                   Page 8 of 8
+
+Colours
+~~~~~~~
+
+The following colours are used by AIchat when ANSI is enabled:
+
+Light Grey      Default colour
+White           System messages
+Green           "Yelling for Sysop" message
+Cyan            Characters typed by user
+Yellow          Characters typed by sysop or AIchat
+Light Green     AIchat's internal "thoughts"
+Light Red       Fatal error messages
+
+These colours are not currently customisable.
+
+
+
+Technical Notes
+~~~~~~~~~~~~~~~
+
+AIchat provides a wordwrap facility superior to the one in the Remote
+Access internal chat routines.  Although AIchat will read the BIOS row
+and column information and work correctly on any text resolution with at
+least 80 columns (I often use 132 columns by 60 rows) the wordwrap will
+always ensure that text is wrapped after column 79 to match user
+displays.  Words longer than 20 characters will not be wrapped.
+
+The Alt-J Jump to DOS facility will swap most of AIchat to EMS (if
+available) or disk, leaving only about 9K of RAM in use.
+
+All I/O is done strictly through DOS and BIOS calls without any direct
+hardware access whatsoever, so it should work with any PC system
+compatible at the BIOS level, which is just about everything these days.
+This will also make a multi-user release much easier to implement!
+
+
+
+Future Enhancements
+~~~~~~~~~~~~~~~~~~~
+
+Enhancements planned for future releases include:
+
+* A nickname file to allow nicknames for certain users.
+* User-specific keywords and phrases.
+* An AICHAT.CTL file to allow sysop customization.
+
+If you have any further suggestions or comments, feel free to leave a
+message to "Avatar" on my bulletin board or write to:
+
+        Serious Cybernetics
+        P.O. Box 409
+        Canterbury VIC 3126
+        Australia
+
+This program was brought to you courtesy of S.I.G. BBS on +61-3-888-8846
+Share and enjoy!

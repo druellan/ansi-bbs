@@ -1,0 +1,2220 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        GEdit
+
+                                    Version 2.01
+
+                              Released on July 1, 1993
+
+
+
+
+
+
+
+
+
+
+
+
+                             Written by Chris Patterson
+
+
+
+
+
+
+
+
+
+
+
+
+                   COPYRIGHT 1992,93 The Developers Network, Inc.
+                                 All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                       Page 2
+       ----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       COPYRIGHT 1992,93 The Developers Network, Inc.
+
+       All Rights Reserved.  No part of the contents of this document may  be
+       reproduced in whole or in part without the express written  permission
+       of The Developers Network, Inc.
+
+       This document was written using Microsoft Word for Windows.
+
+       Names  of  products  mentioned  herein  are  used  for  identification
+       purposes only and  may be trademarks  and/or registered trademarks  of
+       their respective  companies.    Microsoft and  MS-DOS  are  registered
+       trademarks and Windows is a trademark of Microsoft Corporation.
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                       Page 3
+       ----------------------------------------------------------------------
+
+
+                                  Table of Contents
+
+       Table of Contents .............................................3
+       Words from the Author .........................................4
+       Shareware Notice ..............................................5
+            Disclaimer and Warranty Information ......................5
+       Distribution ..................................................6
+            Obtaining the Latest Version of GEdit ....................6
+       Registering GEdit .............................................7
+            Competitive Upgrade ......................................7
+            Registration Benefits ....................................7
+       GEdit Registration Form .......................................8
+       Introduction ..................................................9
+            Features .................................................9
+            Technical Features .......................................11
+       Installation ..................................................12
+            The GEdit Environment Variable ...........................12
+            Installing GEdit on Your BBS .............................13
+            Installing GEdit for Use With BlueWave ...................14
+       Command-Line Parameters .......................................15
+       Using GEdit ...................................................16
+            Entering a Message .......................................16
+            Editing a Message ........................................17
+            Quoting Original Message Text ............................17
+       Controlling GEdit from the Local Keyboard .....................19
+            User Interface Features ..................................19
+            Moving and Resizing Windows ..............................19
+            Using Dialog Boxes .......................................19
+            The Editing Window .......................................20
+            The Status Bar ...........................................20
+            Color Configuration ......................................20
+       The GEdit Menu System .........................................21
+            The Main Menu ............................................21
+            The Message Menu .........................................21
+            The Quote Menu ...........................................22
+            The Help Menu ............................................23
+            The Terminal Menu ........................................23
+       Keyboard Reference ............................................25
+            Sysop Keys ...............................................27
+       Programmable Function Keys ....................................29
+       Appendix A ....................................................30
+            The QuickBBS-style MSGTMP External Editor Interface ......30
+       Appendix B ....................................................32
+            Troubleshooting Problems .................................32
+       Appendix C ....................................................33
+            The DOS Application Class Library ........................33
+       Index .........................................................36
+
+
+
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                       Page 4
+       ----------------------------------------------------------------------
+
+
+                                Words from the Author
+
+       It has been  just over a  year since the  first version  of GEdit  was
+       released.  I  must admit,  I was surprised  to see  how quickly  GEdit
+       became the most talked about editor for QuickBBS clones.  Almost every
+       system I have called is now using GEdit.
+
+       There haven't been many  updates released over the  past year.   GEdit
+       has been  working great  for  many Sysops.    However, some  have  had
+       problems getting GEdit to work properly in their configurations.  This
+       was partially  due to  some inherent  problems  in the  libraries  and
+       partially due to poor application design.
+
+       New BBS packages were being released and updated at an alarming  rate,
+       each one making it's own changes to the original QuickBBS data  files.
+       Since GEdit  was originally  written to  work with  RemoteAccess,  the
+       application was tied closely to the  RemoteAccess data files.  It  was
+       at this point I began to redesign GEdit from the ground up.
+
+       GEdit 2.01 is the result of  the past year's work.   The new GEdit  is
+       written in pure C++ source code.   The new BBS interface routines  are
+       completely object-oriented  with a  separate module  defined for  each
+       individual BBS  package.   This makes  adding support  for a  new  BBS
+       package easy and  allows for more  complete support  of each  package.
+       Since each module is self-contained, changes made for one BBS will not
+       affect the support for other packages.
+
+       (This was made obvious when version 1.00.06/Gamma was released and the
+       QuickBBS and SuperBBS support was broken.)
+
+       Despite the  overwhelming  response to  GEdit,  registrations  haven't
+       matched up  to  the number  of  Sysops using  GEdit.   To  be  honest,
+       registrations haven't even come close.  Because of this, I  considered
+       releasing GEdit 2.01 for registered users  only.  However, due to  the
+       number of  changes  in version  2.01,  I am  going  to make  one  more
+       Shareware release.   Hopefully, Sysops will  realize that  GEdit is  a
+       quality product worth registering.
+
+       This 2.01 release of GEdit will be  the first of several that will  be
+       released over the next  several months.  Many  new features are  being
+       added to make  GEdit even better.   I encourage  you to register  your
+       copy of GEdit 2.01 to make  sure that you will be  able to use all  of
+       the new features.   The functionality  of GEdit 2.01  will become  the
+       base feature set for future unregistered releases.
+
+       I hope  you enjoy  using the  all new  GEdit 2.01.   If  you have  any
+       questions or comments regarding GEdit, see the support section of  the
+       manual for information on contacting the author.
+
+                                     Chris Patterson, GEdit Author
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                       Page 5
+       ----------------------------------------------------------------------
+
+
+                                  Shareware Notice
+
+       GEdit is distributed as Shareware.  You are licensed to use GEdit  for
+       evaluation purposes only.  After evaluating GEdit, you are  encouraged
+       to register (purchase) GEdit.  Registering your copy of GEdit not only
+       gives you peace of mind, but helps support future versions as well.
+
+       The Developers  Network, Inc.  retains all  rights to  GEdit and  it's
+       source code.   The  source code  is not  available to  the public  and
+       remains the intellectual property of The Developers Network, Inc.
+
+       No disassembly, reverse-engineering or modification of the  executable
+       images is allowed.  Use of an executable file compression utility such
+       as PK*Lite is allowed, however, product  performance can no longer  be
+       guaranteed.
+
+
+                         Disclaimer and Warranty Information
+
+       GEdit is provided to the user "AS IS" with absolutely no warranties or
+       guarantees of any kind.   The Developers  Network, Inc. disclaims  all
+       warranties, either expressed or  implied.  The entire  risk as to  the
+       results and  operation of  GEdit is  assumed by  you, the  user.   The
+       Developers Network,  Inc.  does  not  make  any  claims,  promises  or
+       guarantees as to  the ability  to use or  inability to  use GEdit  and
+       cannot and do not accept any responsibility for system damage, loss of
+       profit, or  any other  special,  incidental or  consequential  damages
+       resulting from the use or inability to use this product.
+
+       Furthermore, The Developers Network, Inc. reserves the right to revise
+       this publication and to make changes from time to time in the  content
+       hereof without obligation  of The Developers  Network, Inc. to  notify
+       any person or organization of such revision or changes.
+
+       Caution has been taken to prevent any harmful or dangerous programming
+       errors in this  software program.   However,  The Developers  Network,
+       Inc. will take  no liability  for damages  either from  the direct  or
+       consequential use of this product.  If GEdit happens to destroy  data,
+       reformat your hard disk, burn out  your monitor or anything else  that
+       happens due to your use or inability  to use this program, you are  on
+       your own.
+
+       We strongly recommend  that you  back up any  files that  may come  in
+       contact with  GEdit,  including  BBS  configuration  and  data  files.
+       Regularly scheduled backups should be an important part of your weekly
+       routine due to the random nature of computer hardware failure.
+
+       The only guarantee is that GEdit will occupy space on your hard disk.
+
+
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                       Page 6
+       ----------------------------------------------------------------------
+
+
+                                    Distribution
+
+       GEdit may be distributed by anyone, as long as the following rules are
+       followed:
+
+          Nothing is modified, added  or deleted in  the original files.   No
+          additional files may be added to the distribution archive, however,
+          the  archive  format   may  be  changed.     Do  not   include  BBS
+          advertisements or logos in the GEdit distribution archive!
+
+          No  fee  is  charged  for  distribution.    Bulletin  board  system
+          operators may charge a fee for the BBS itself, but no extra charges
+          for downloading GEdit are allowed.
+
+          Shareware distributors  may  not make  a  profit from  distributing
+          GEdit unless  they  have  written  permission from  The  Developers
+          Network, Inc.   If  you wish  to  include GEdit  in your  Shareware
+          collection, please contact The  Developers Network, Inc.  to obtain
+          the appropriate agreement.
+
+          GEdit may not  be included with  any other software  package unless
+          the distributor  obtains  written  permission from  The  Developers
+          Network, Inc.
+
+          Registration keys for GEdit may not be distributed to anyone by any
+          unauthorized  individuals  or  organizations.    The  only  parties
+          eligible  to  distribute  GEdit  registration   keys  are  properly
+          authorized registration sites.
+
+          GEdit key files contain  personal information about  the registered
+          user and should remain confidential.  Registered users may not give
+          their KEY files to  anyone.  If you  give your KEY file  to another
+          user, your  own personal  information will  be  displayed on  their
+          system.
+
+          Use of an unauthorized registration key other  than one provided to
+          you by The Developers Network, Inc. constitutes  a violation of the
+          license agreement.
+
+
+                        Obtaining the Latest Version of GEdit
+
+       The most recent  version of  GEdit is  always available  from the  The
+       Developers Network BBS.   The BBS  is available 23  hours per day  and
+       supports baud rates of 2400 through 19200 BPS.  Both v.32bis and ZyXEL
+       protocols are available.
+
+                             The Developers Network BBS
+                               1-918-251-6252 (U.S.A.)
+                                 1:170/303 (FidoNET)
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                       Page 7
+       ----------------------------------------------------------------------
+
+
+                                  Registering GEdit
+
+       After evaluating GEdit,  you must pay  for GEdit  by registering  your
+       copy.   To register,  simply complete  the  registration form  on  the
+       following page  and send  it, along  with  the appropriate  amount  in
+       United States currency (cash, check or money order) to:
+
+                            The Developers Network, Inc.
+                                    P.O. Box 1660
+                               Broken Arrow, OK  74013
+                                         USA
+
+          Please make all checks payable to:  The Developers Network, Inc.
+
+       To  register  using  a  credit  card,  you  must  contact  the  Public
+       (software) Library .   You can  use your  Master Card,  Visa, American
+       Express or Discover card.  Complete the registration form so that  all
+       the necessary information is available.  Then contact the PsL at:
+
+                 United States (voice)    1-800-242-4PsL (4775)
+                 Overseas (voice)         1-713-524-6394
+                 FAX                      1-713-524-6398
+                 CompuServe               71344,470
+
+       Please allow 2 to 4 weeks for your registration to be processed.
+
+
+                                 Competitive Upgrade
+
+       If you are a registered owner  of TopEd, QuickEd, or EzyEdit, you  can
+       upgrade to GEdit for  a reduced price.   See the  order form for  more
+       information.  Proof of registration is  required.  If you want to  use
+       the credit card registration, the upgrade pricing is not available.
+
+
+                                Registration Benefits
+
+       Registering your copy of GEdit will remove all of the limitations  and
+       registration messages.   You  will also  receive priority  service  in
+       response  to  questions  and   suggestions.    All  suggestions   from
+       registered users are considered for future releases of GEdit.
+
+       You are also granted free access  to The Developers Network BBS.   The
+       BBS always contains the most recent  version of GEdit and has an  area
+       for discussing GEdit  enhancements and improvements.   There are  also
+       over 650 megabytes of Shareware  and public domain software  available
+       for download.
+
+
+
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                       Page 8
+       ----------------------------------------------------------------------
+
+
+       GEdit Registration Form                                PsL Part #10808
+
+           Sysop Name:              ___________________________________
+
+           System Name:             ___________________________________
+
+           Mailing Address:         ___________________________________
+
+                                    ___________________________________
+
+                                    ___________________________________
+
+                                    ___________________________________
+
+           Voice Phone:             ___________________________________
+
+           BBS Software:            ___________________________________
+
+           BBS Phone:               ___________________________________
+
+           BBS Network Inf.:        ___________________________________
+
+           GEdit Version:           ___________________________________
+
+           How would you like your GEdit key delivered?
+
+           _____ FidoNET File Attach, specify address: _______________
+
+           _____ UUENCODED E-Mail, specify address: __________________
+
+           _____ CompuServe E-Mail, specify address: _________________
+
+           _____ Postal Service Mail, specify disk format: ___________
+
+           Registration Amount Enclosed:
+
+           _____ Regular Registration, $20
+
+           _____ Competitive Upgrade, $15
+
+           _____ Credit Card Registration, $25
+
+                 Credit Card Number  ______________________________
+
+                 Expiration Date     ______________________________
+
+                 Signature           ______________________________
+
+                   (Pricing for GEdit is current as of this manuals)
+                        (release date shown in the page header)
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                       Page 9
+       ----------------------------------------------------------------------
+
+
+                                    Introduction
+
+       Thank you for  trying GEdit.   GEdit is a  feature loaded  full-screen
+       message editor for use with on-line bulletin board systems.  GEdit has
+       the widest compatibility of any full-screen message editor, supporting
+       most of the newest  QuickBBS-style BBS packages.   GEdit will improve
+       your bulletin board  system by providing  a fast and  easy method  for
+       users to enter and  reply to messages.   GEdit has an easy-to-use  and
+       learn editing facility and includes  many advanced features not  found
+       in any other editor.
+
+       GEdit should run on any IBM-PC,  PC-XT or 100% compatible system  with
+       at least 350k of free conventional memory.  It will work with either a
+       color or monochrome monitor and requires MS-DOS version 3.0 or later.
+
+       GEdit 1.00 was  first introduced  on March 15,  1992.   Over the  past
+       year, GEdit has been drastically improved over the original  releases.
+       There is not one line of the original  code in this new version.   The
+       functionality and extendibility of the  program has been increased  to
+       provide more features and less programming errors.
+
+       GEdit version  2.01 includes  full support  for RemoteAccess , EzyCom,
+       SuperBBS, ProBoard and QuickBBS .  GEdit will  automatically determine
+       under which environment it is  running and adjust itself  accordingly.
+       There are certain  restrictions to this  automatic detection that  are
+       detailed in the Installation section of this manual.
+
+       GEdit can also be used with the various off-line mail readers such  as
+       BlueWave.  This allows  users to use the  familiar interface of  GEdit
+       when editing messages off-line as well as on-line.
+
+
+                                      Features
+
+          Full support for RemoteAccess, EzyCom, SuperBBS,  and QuickBBS.  At
+          release time, GEdit has been tested with the most recent version of
+          the above listed software  packages.  See the  requirements section
+          for the specific version information.
+
+          The easiest installation of any full-screen editor in the business.
+          Simply install  GEDIT.EXE  as the  full-screen  message editor  and
+          forget about anything else forever.  No configuration is necessary.
+          All information is read  from the software configuration  files for
+          the fastest setup of any editor!
+
+          Support for  ANSI,  ANSI  3.64,  AVATAR/0 and  AVATAR/0+  emulation
+          codes.   The  emulation  mode can  be  configured  by the  user  to
+          eliminate any possible compatibility problems.   ANSI support level
+          is automatically determined.
+
+          Compatible with DOORWAY/AVATAR  remote keyboard  codes, as  well as
+          the VT-100 keypad codes sent by many  terminal applications.  Extra
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 10
+       ----------------------------------------------------------------------
+
+          code is included to handle the non-standard codes sent by FrontDoor
+          Terminal.
+
+          Automatic line- and word-wrap  while entering text,  including full
+          paragraph reformatting.  Word-wrapped  paragraphs are automatically
+          reformatted as text is entered or deleted.
+
+          User screen  length is  adjusted by  the user  file information  to
+          provide the  maximum  possible  editing  area.   Screen  output  is
+          optimized for screen size and terminal emulation mode as well.
+
+          Very easy-to-use interface provides a short  learning curve for new
+          as well as experienced  users.  An  all new, intuitive  menu system
+          helps beginners get up to speed quickly.
+
+          Advanced file import and export functions, including the ability to
+          load a file into  the quote window  for browsing and  pasting text,
+          are included.
+
+          The user  can adjust  their terminal  settings without  leaving the
+          editor.
+
+          A  keystroke  is  included  to  allow   the  Sysop  to  immediately
+          disconnect those "problem" users.
+
+          The Sysop  can  adjust  the  time  remaining  for  a  user  with  a
+          keystroke.
+
+          Flexible quote  window  with  full  navigation  makes  replying  to
+          messages easier than ever.   The quote window can  also be adjusted
+          at will to provide a larger viewing area.  The quote option is only
+          available when quote text is present to avoid confusion.
+
+          Message information  such as  the sender  name,  receiver name  and
+          message subject are displayed while editing when GEdit is used with
+          supported software packages.
+
+          Multiple node support,  including enhanced  support for  EzyCom, is
+          now included.    GEdit  will  now  match the  requirements  of  all
+          supported  software.    GEdit  supports  EzyCom's  extended  editor
+          interface allowing multiple nodes to run from a single directory.
+
+          Minimal screen  updating  for improved  response  time with  slower
+          modem connections.
+
+          Sysop features  such as  file import  and  export and  programmable
+          function keys  are usable  during both  remote and  local sessions.
+          See the  command-line option  section for  information on  enabling
+          this feature.
+
+
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 11
+       ----------------------------------------------------------------------
+
+                                 Technical Features
+
+          GEdit is written in 100%  C++ and compiled using  the Microsoft C++
+          compiler.  All of  the support classes were  developed in-house and
+          no external libraries were used.   The class library  and tools are
+          in the process of being packaged for resale.  For more information,
+          see Appendix B.
+
+          Serial communications are performed using the FOSSIL driver for the
+          widest possible compatibility.  In order to support systems that do
+          not use a FOSSIL driver, interrupt-driven  serial port routines are
+          built-in.
+
+          Carrier, user time remaining  and idle time-outs are  all monitored
+          internally for safe operation, eliminating down-time.
+
+          All video routines are  handled internally, including the  ANSI and
+          AVATAR/0+ emulation decoding.  This eliminates the need for DVANSI,
+          ANSI.SYS or any other console drivers.
+
+          Most multitaskers are  supported,  including  DESQview , Microsoft
+          Windows, and  OS/2.   Idle  time-slices  are  passed  off  to  the
+          multitasker for scheduling to other tasks.
+
+          Network compatible, including Novell NetWare 386, Microsoft Windows
+          for Workgroups, Lantastic and NetWare Lite.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 12
+       ----------------------------------------------------------------------
+
+
+                                    Installation
+
+       GEdit is simple to install and only requires modification to your  BBS
+       configuration.  GEdit  has been  tested with  the following  packages:
+       RemoteAccess [including RA/Professional] 1.11  and 2.00, EzyCom  1.02,
+       ProBoard 1.30, SuperBBS 1.17, QuickBBS 2.76, and BlueWave 2.10
+
+       In addition to the above software  packages, GEdit will work with  any
+       BBS that can create a DORINFO1.DEF  file and uses the QuickBBS  MSGTMP
+       style  full-screen  editor  interface.    (See  Appendix  A  for  more
+       information on the MSGTMP interface.)
+
+       GEdit has been  designed to automatically  detect the  BBS package  in
+       use.  However, due to the number of different packages now  available,
+       certain restrictions have been placed on  this features.  In order  to
+       ensure correct identification  of the BBS  type, GEdit  will scan  the
+       environment for  the  environment  variables  used  by  the  different
+       software packages.  The environment variables scanned for are:
+
+                      Env. Variable       Software Package
+
+                      EZY                 EzyCom
+                      PROBOARD            ProBoard
+                      QUICK               QuickBBS
+                      RA                  RemoteAccess
+                      SBBS                SuperBBS
+
+       If more than one  of these variables are  specified, you must use  the
+       GEDIT environment variable to tell GEdit which BBS is being used.
+
+
+                           The GEdit Environment Variable
+
+       Certain system configurations  specify more than  one BBS  environment
+       variable and may cause the  automatic configuration routines to  fail.
+       Because of this,  there is a  GEDIT environment variable  that can  be
+       used to override the default detection.  The environment variable must
+       be set before running GEdit.
+
+       An example of setting the GEdit environment variable would be:
+
+            SET GEDIT=BBS:PROBOARD
+
+       This would force GEdit to attempt to obtain the exit information  from
+       the ProBoard system files before attempting to automatically determine
+       the system configuration.
+
+       The following  option is  used by  GEdit  from the  GEDIT  environment
+       variable.
+
+            BBS:<type>     Forces GEdit  to  check for  a  specific  BBS
+                           package before checking for  others.  If  the
+                           specified BBS package could not be found, the
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 13
+       ----------------------------------------------------------------------
+
+                           automatic detection will attempt to determine
+                           the real  type.    This  is  only  needed  on
+                           systems that have  more than one  of the  BBS
+                           environment variables defined.
+
+                           The following values are valid:
+
+                              Value     Software Package
+                              -----     ----------------
+                              DORINFO   Generic DORINFO1.DEF Type System
+                              EZY       EzyCom
+                              PROBOARD  ProBoard
+                              RA        RemoteAccess
+                              QUICK     QuickBBS
+                              SBBS      SuperBBS
+
+
+                            Installing GEdit on Your BBS
+
+       To install GEdit on your BBS, you must first unpack the archive into a
+       directory.  GEdit should  be placed in  it's own directory  underneath
+       your main bulletin board system directory.  For example:
+
+                                     C:\RA\GEDIT
+
+       Installing GEdit in it's  own directory allows you  to keep GEdit  and
+       it's associated files in a single location.  This is not required, but
+       does keep the system directory less cluttered.
+
+       The GEdit help files (GE_?????.A??) can either be located in the  same
+       directory as GEDIT.EXE, or  they can be placed  in your BBS text  file
+       directory.  The text file directory is checked first, and if the files
+       are not found, the directory containing GEDIT.EXE is then checked.
+
+       GEdit will  store  any additional  files,  such as  the  function  key
+       definition file  and  configuration file,  in  the same  directory  as
+       GEDIT.EXE.  If you are running a multiple-line system, make sure  that
+       all of the nodes are using the same  copy of GEDIT.EXE.  If all  lines
+       are not using the same program file, the configuration and macro files
+       may not contain the same information.
+
+       In order for users to be able to use GEdit, you must install it as the
+       full-screen editor in your BBS  configuration file.  Example  command-
+       lines for the supported BBS packages are shown below:
+
+            RemoteAccess   C:\RA\GEDIT\GEDIT.EXE -N*N *M
+            EzyCom         C:\EZY\GEDIT\GEDIT.EXE -N*N *M
+            SuperBBS       C:\SUPERBBS\GEDIT\GEDIT.EXE -N*N *S
+            QuickBBS       C:\QUICKBBS\GEDIT\GEDIT.EXE -N*N *M
+            ProBoard       *SGEDIT\GEDIT.EXE -N*#
+            Generic        C:\BBS\GEDIT\GEDIT.EXE
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 14
+       ----------------------------------------------------------------------
+
+       If your BBS software is not supported in this version of GEdit, please
+       urge the  BBS author  to  contact The  Developers  Network, Inc.    If
+       possible, support will be added.
+
+
+                       Installing GEdit for Use With BlueWave
+
+       GEdit can be installed for use  with BlueWave by specifying  GEDIT.EXE
+       as the external editor name in the BlueWave configuration.  When GEdit
+       is loaded by BlueWave, GEdit will come up in local mode and allow  the
+       message to be edited.  When  entering a new message, editing  proceeds
+       normally.  When  replying to a  message, GEdit will  place the  quoted
+       reply text in  the quote buffer  for selected pasting  of quote  text.
+       When editing an existing message, GEdit  will still place the text  in
+       the quote buffer  since BlueWave  does not  make any  sort of  "editor
+       information" file for use by the editor.
+
+       To install GEdit, unpack the GEdit archive into it's own directory and
+       configure GEdit to use GEdit as the external editor.  An example:
+
+            C:\BLUEWAVE\GEDIT.EXE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 15
+       ----------------------------------------------------------------------
+
+
+                               Command-Line Parameters
+
+       Some GEdit options  can be configured  using command-line  parameters.
+       All command-line parameters must be separated by spaces and parameters
+       cannot be combined.
+
+            -N<node>       Indicates the node number of the current user
+                           on-line.  If  this option  is not  specified,
+                           GEdit will default to 1.
+
+            -S<level>      Indicates the minimum  Sysop security  level.
+                           If the user's security  level is equal to  or
+                           greater than the  level specified, the  Sysop
+                           functions  (function  keys,  file  importing,
+                           etc.) are available to the user during  local
+                           and remote editing sessions.
+
+                                     !! NOTE !!
+         If you are using a supported BBS package, you should not use any of
+                              the following variables!
+
+            -R<lines>      Indicates the number of lines to use for  the
+                           editing area.   The  information is  normally
+                           read from the user  record.  When editing  in
+                           local mode, the number  of lines is equal  to
+                           the current screen length.
+
+            -A<graphics>   Indicates the  graphics capabilities  of  the
+                           user.   "1"  indicates  ANSI,  "2"  indicates
+                           AVATAR,  and  "3"  indicates  both  ANSI  and
+                           AVATAR (AVATAR will be used).
+
+            -M<timeLeft>   Indicates the number of minutes remaining  in
+                           the editing session.
+
+            -I<inActive>   Indicates the number of  seconds the user  is
+                           allowed   to   remain   idle   before   being
+                           disconnected.  This is ignored in local mode.
+
+       Multiple command-line parameters  can be specified.   Each  individual
+       command-line parameter must be separated by a space.  An example would
+       be:
+
+            GEDIT.EXE -N3 -S100
+
+       This would load GEdit, specify the node number as node 3 and specify a
+       Sysop security level of 100.  Any user with a security level of 100 or
+       greater will have access to the Sysop functions while editing.
+
+
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 16
+       ----------------------------------------------------------------------
+
+
+                                     Using GEdit
+
+       GEdit provides the  user an easy-to-understand  screen layout to  make
+       editing messages easier.  The screen layout is clean and provides  the
+       largest possible workspace for editing.
+
+       The GEdit screen is  divided into sections.   There is an  information
+       bar at the top of the screen, the editing window  is in the middle and
+       the command section is at the bottom of the screen.
+
+       On the left side  of the information  bar, operational information  is
+       shown, including  the program  version,  terminal emulation  mode  and
+       editing mode.  The  editing mode has  three possible settings,  insert
+       mode (INS), overwrite mode (OVR) or line drawing mode (LIN).
+
+       The middle portion of the information bar contains who the message  is
+       from, who it is to, and the subject of the message.
+
+       The right side of the information  bar displays the local time on  the
+       BBS and the number  of minutes remaining on-line.   As time  remaining
+       runs short, the time remaining counter  will flash and a warning  beep
+       will sound every minute.
+
+       The editing  portion  of the  screen  is  where the  message  text  is
+       displayed.  New text is displayed in one color and quoted message text
+       is displayed in a different color.
+
+       When replying to  a message, the  editing window is  divided into  two
+       sections and the quote window is displayed in the lower portion with a
+       line separating  the  two  areas.   The  separator  contains  a  quick
+       reference of  the  extra  keystrokes available  while  the  cursor  is
+       located in the quote window.
+
+       The command section and the editing area are separated by a help line.
+       The help line tells the user  which keys will activate the GEdit  menu
+       and quote  function.    The quote  function  is  only  available  when
+       replying to a message and  quote text is available.   The name of  the
+       area where the message is being entered is centered on the line.
+
+       The command section has several purposes.  Copyright and  registration
+       information is  displayed during  normal editing.   When  the menu  is
+       activated, the  menu options  are displayed.    When an  operation  is
+       completed, status messages are displayed.
+
+
+                                 Entering a Message
+
+       Using GEdit to enter  a message is easier  than using a  line-oriented
+       editor.  There are no complex commands  to learn and you can reword  a
+       phrase as many times as you like and correct errors as you go.
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 17
+       ----------------------------------------------------------------------
+
+       Before you begin typing, position the cursor where you want to  insert
+       the text.   If the  message doesn't contain  any text,  the cursor  is
+       already positioned at the beginning of the message.
+
+       To position the cursor, press the arrow keys or the HOME, END, PAGE UP
+       and PAGE DOWN keys.
+
+       To add  text to  a document,  position the  cursor where  you want  to
+       insert new  text and  type the  new text.   As  you type,  the  cursor
+       advances to the right.   GEdit automatically  adjust the text  between
+       the right and left margins, starting a new line where necessary.  This
+       is called word-wrap.
+
+       NOTE:  If you press the INSERT key, the  status bar at the top of  the
+       screen displays "OVR"  for over-type  mode.   The next  text you  type
+       replaces the text that is at the cursor position.  If you press INSERT
+       again, the text you type is inserted to the left of any existing text;
+       the existing text moves to the right.
+
+       Do not press the ENTER key  at the end of  each line.  Instead,  press
+       ENTER only to start a new paragraph.  If you press ENTER at the end of
+       each line, GEdit can't adjust the  line breaks when you add or  delete
+       text.  Take advantage of word-wrap; it is one of the many benefits  of
+       using a full-screen editor.
+
+
+                                  Editing a Message
+
+       Editing, or  revising, message  text  is easy  with  GEdit.   You  can
+       delete, insert or rearrange text in a message.
+
+       To delete a line  of text, press (Control-Y).   The current text  line
+       will be deleted and stored in a "scrap" buffer.  The size of the scrap
+       buffer is limited only by available memory.
+
+       To insert a previously deleted line  of text, press (Control-U).   The
+       last deleted line of  text is inserted before  the current text  line.
+       If there  are no  lines  remaining in  the  scrap buffer,  nothing  is
+       inserted.
+
+
+                            Quoting Original Message Text
+
+       When replying to a message,  it is a polite  to "quote" text from the
+       original message to allow the original author to establish the context
+       of your reply.  GEdit allows you to view the original message text  in
+       a "quoted" form and  gives you the ability  to insert portions of  the
+       quoted text into your reply message text.
+
+       If quoted  text is  available,  the [  ^Q=Quote  ] indicator  will  be
+       visible on the lower status line of  the editing screen.  To open  the
+       quote windows,  press  (Control-Q) or  activate  the menu  and  select
+       (Q)uote, (O)pen.  The message editing area is separated into upper and
+       lower sections.  The quote text is displayed in the lower window.
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 18
+       ----------------------------------------------------------------------
+
+       The cursor can be positioned in  the quote window using the same  keys
+       that are used to  position the cursor when  editing the message  text.
+       However, the text in the quote window cannot be modified.
+
+       To copy an entire line of text from the quote window into the message,
+       position the cursor at the beginning of the line you wish to copy  and
+       press the [Enter] key.  This line  will be copied into the message  at
+       the message window's cursor position and the cursor will move down one
+       line.
+
+       To copy  a partial  line of  text, position  the cursor  at the  first
+       character in the line you want to copy and hit [Enter].  The text from
+       the cursor position to  the end of  the line will  be copied into  the
+       message.  If there is a quote header at the beginning of the line,  it
+       will be added to the beginning of the line automatically.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 19
+       ----------------------------------------------------------------------
+
+
+                      Controlling GEdit from the Local Keyboard
+
+       GEdit has  a number  of features  that are  available from  the  local
+       keyboard.  These features  are only useful on  the local GEdit  system
+       and have no benefit for the remote user.
+
+
+                               User Interface Features
+
+       The user  interface  library  used by  GEdit  provides  many  advanced
+       capabilities.  All of  the windows on the screen  are independent and
+       each window executes a different thread of code.
+
+
+                             Moving and Resizing Windows
+
+       All of the windows in GEdit (except for the gray dialog boxes) can  be
+       moved and resized using the mouse.  The size of a window is limited by
+       the physical size  of the  screen.  On  a system  with an  EGA or  VGA
+       display adapter, you can use Alt-E to switch between 25 line and 43/50
+       line modes.
+
+       To resize a window, move the mouse cursor to the lower-right corner of
+       the window and press and hold the  left mouse button.  Move the  mouse
+       to adjust the window size.
+
+       To move a window, move the mouse cursor  to the top row of the  window
+       and press and  hold the left  mouse button.   Move the  mouse and  the
+       window will follow the mouse around the screen.
+
+       NOTE:  A window  does not have to  be on top to  be resized or  moved.
+       Any window whose control points are accessable can be adjusted.
+
+
+                                 Using Dialog Boxes
+
+       GEdit uses dialog boxes to allow  configuration of certain items  such
+       as programmable function  keys.   A dialog  box contains  a series  of
+       "controls" that  allow input.   The  active  control has  a  different
+       appearance than the  other controls.   Active fields  are a  different
+       color and contain a cursor for editing the field text.  Active buttons
+       are surrounded by a double border.
+
+       To move between  fields in a  dialog box, use  tab, shift-tab, or  the
+       arrow keys.  The tab key will move  to the next field in the  dialog's
+       tab order, the shift-tab key moves  to the previous field.  The  arrow
+       keys function changes depending on the type of the current field.
+
+       The [Enter] and [Escape]  keys have special meaning  in a dialog  box.
+       The [Enter]  key  will  activate the  default  button  in  the  dialog
+       (indicated by  a half  double border)  as another  button is  not  the
+       active control.  The [Escape] key  is the equivalent of canceling  the
+       operation, usually without saving any changes.
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 20
+       ----------------------------------------------------------------------
+
+       The mouse can be used to select  controls in a dialog by clicking  the
+       left mouse button.  Selecting a button with the mouse will execute the
+       command associated with that button.  Selecting a field will make  the
+       field active.   If an  active field is  selected with  the mouse,  the
+       cursor will move to the selected location in the field.
+
+
+                                 The Editing Window
+
+       The editing window where the editor module of GEdit runs is a virtual,
+       buffered window.  This means that the actual size of window buffer may
+       be larger than the visible on-screen window.  This occurs when a  user
+       with a screen length longer than the local physical screen can  handle
+       uses GEdit.  When this happens, the visible portion of the buffer will
+       "shift" as it follows the cursor, causing other portions of the screen
+       to disappear past the edges of the on-screen window.  This shifting is
+       only visible on the local  screen and the user  is unaware that it  is
+       occurring.
+
+
+                                   The Status Bar
+
+       When a remote user is editing  with GEdit, a status bar emulating  the
+       status bar of the  BBS package is displayed.   The status bar  changes
+       appearance and size, depending on the BBS package in use.  This allows
+       the local  Sysop to  view information  about the  current user.    The
+       function keys  Shift-F1 through  Shift-F10 are  used to  select  which
+       status bar panel  to view and  correspond to the  F1 through F10  keys
+       used by the BBS package.
+
+
+                                 Color Configuration
+
+       The colors in the  editing window can  be configured using  the GEdit
+       configuration dialog.  To display the configuration dialog, press Alt-
+       S while GEdit  is loaded.   The up  and down  arrow keys  are used  to
+       adjust the foreground and  the left and right  arrow keys are used  to
+       adjust the background of the currently selected color.  You can select
+       the current color using the  F5 and F6 keys.   When you are  finished,
+       press [Escape] to close  the configuration dialog  and save the  color
+       changes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 21
+       ----------------------------------------------------------------------
+
+
+                                The GEdit Menu System
+
+       GEdit uses a menu system to provide access to the large number of new
+       features that  are available.   The  system consists  of a  series  of
+       nested menus, each grouped by function.
+
+       To access the menu, either press [Escape] or [Control-O] and the  menu
+       will be  displayed.   When using  GEdit from  remote, there  may be  a
+       slight delay due to  the remote input processing  routines.  Once  the
+       menu is displayed, you select an option by pressing the letter that is
+       highlighted in the menu option.  If that option contains a sub menu of
+       other options,  the sub  menu is  displayed, otherwise  the option  is
+       selected.  If you wish to return to the previous menu or exit the menu
+       system, press [Escape] or [Control-O].
+
+
+                                    The Main Menu
+
+       The main menu contains the most basic functions, as well as options to
+       display the more advanced menus.  The following options are  available
+       at the main menu.
+
+            Message                       Displays the message sub-menu.
+
+            Quote                         Displays the quote sub-menu.
+
+            Terminal                      Displays the terminal sub-menu.
+
+            Help                          Displays the help sub-menu.
+
+            Save                          Saves the current message and exits
+                                          the editor.
+
+            Continue                      Returns the cursor  to the  editing
+                                          screen and exits the menu system.
+
+            Abort                         Exits the editor without saving the
+                                          current message.    A  confirmation
+                                          prompt is displayed.
+
+
+                                  The Message Menu
+
+       The message menu  includes commands  that affect  the current  message
+       being edited.  The following commands are available:
+
+            Clear                         Clears the  current  message  text,
+                                          allowing  the  user  to  begin  the
+                                          message   from    scratch.        A
+                                          confirmation prompt is displayed.
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 22
+       ----------------------------------------------------------------------
+
+            Export                        Allows  the  user  to  export   the
+                                          current message text  to a file  on
+                                          the system running the editor.
+
+                                          NOTE:   The  user must  have  Sysop
+                                          security to use this function.
+
+            Import                        Allows the user to import text from
+                                          a file  on the  system running  the
+                                          editor into the current message  at
+                                          the current cursor location.
+
+                                          NOTE:   The  user must  have  Sysop
+                                          security to use this function.
+
+
+                                   The Quote Menu
+
+       The quote menu  includes commands that  control the use  of the  quote
+       window.  The following commands are available:
+
+            Open                          Opens the  quote  window  if  quote
+                                          text is available.
+
+            Close                         Closes the  quote window  if it  is
+                                          open.
+
+            Switch                        Switches  the  cursor  between  the
+                                          quote window and  the message  text
+                                          window.
+
+            Erase                         Erases the  text contained  in  the
+                                          quote window and  closes the  quote
+                                          window.  Use  this option when  the
+                                          quote text is no longer needed  and
+                                          memory is low.
+
+            Load                          Allows the user to load a text file
+                                          from the system running the  editor
+                                          into the  quote window.   The  text
+                                          may then be pasted into the message
+                                          text    using    regular    quoting
+                                          procedures.
+
+                                          NOTE:   The  user must  have  Sysop
+                                          security to use this function.
+
+
+                                    The Help Menu
+
+       The help menu allows the user to access the various help screens  that
+       are available.  The following selections are available:
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 23
+       ----------------------------------------------------------------------
+
+            Editing                       Explains the  concepts of  using  a
+                                          full-screen  message   editor   and
+                                          gives a basic introduction to using
+                                          GEdit.
+
+            Quoting                       Explains what  message  quoting  is
+                                          and how it is used.
+
+            Keyboard                      Lists the function of all the  keys
+                                          on the  keyboard  as  they  operate
+                                          within GEdit.
+
+
+                                  The Terminal Menu
+
+       The terminal menu allows the user  to configure the various  terminal-
+       related options of the editor.  The following options are available:
+
+            ANSI-BBS                      The  most   basic  form   of   ANSI
+                                          emulation.  This mode is used  with
+                                          terminal programs that only support
+                                          a very minimal  amount of the  ANSI
+                                          standard.
+
+            ANSI 3.64                     The regular ANSI  settings used  by
+                                          most terminal  programs.    Uses  a
+                                          number of  advanced ANSI  commands,
+                                          including    line-scrolling     and
+                                          clearing codes.
+
+            AVATAR/0                      The basic AVATAR emulation standard
+                                          as  defined  in  FSC-0025  of   the
+                                          FidoNET     technical     standards
+                                          document.  This should be used with
+                                          terminals that do  not support  the
+                                          advanced AVATAR specification.
+
+            AVATAR/0+                     The   advanced   AVATAR   emulation
+                                          standard as defined in FSC-0037  of
+                                          the  FidoNET  technical   standards
+                                          document.  This should be used with
+                                          terminals   that   fully    support
+                                          AVATAR/0+.
+
+            Color                         Selects color operation.   This  is
+                                          the standard mode of operation.
+
+            Mono                          Selects black and white  operation.
+                                          All  color  codes  are  suppressed,
+                                          allowing   users   without    color
+                                          displays to use the editor  without
+                                          straining their  eyes to  determine
+                                          the  difference   between   various
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 24
+       ----------------------------------------------------------------------
+
+                                          shades of  gray.   Great for  users
+                                          with LCD screens as well.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 25
+       ----------------------------------------------------------------------
+
+
+                                 Keyboard Reference
+
+       The following keys are available while editing with GEdit.  Due to the
+       fact that many  terminal programs  emulate the  keyboard in  different
+       ways, the  KEY column  contains the  most direct  key to  perform  the
+       specified action.  The ANSI/DOORWAY key is the most commonly  emulated
+       keystroke that also performs the action.
+
+            KEY       ANSI/DOORWAY        DESCRIPTION
+
+            Control-A (Control-Left)      Moves the cursor  to the  beginning
+                                          of the previous word.
+
+            Control-B                     Centers the current line of text.
+
+            Control-C (PgDn)              Moves the cursor down one screen.
+
+            Control-D (Right)             Moves the cursor one column to  the
+                                          right.
+
+            Control-E (Up)                Moves the cursor one row up.
+
+            Control-F (Control-Right)     Moves the cursor  to the  beginning
+                                          of the next word.
+
+            Control-G (Delete)            Deletes  the  character  under  the
+                                          cursor.  If  the cursor  is at  the
+                                          end of the line,  the next line  is
+                                          moved up  to the  current line  and
+                                          the text is reformatted.
+
+            Control-H (Backspace)         Deletes the previous character.  If
+                                          the cursor is  at the beginning  of
+                                          the line, the  cursor will move  to
+                                          the  end  of  the  previous   line,
+                                          possibly causing  the  text  to  be
+                                          reformatted.
+
+            (Tab)     (Tab)               Moves  the  cursor   to  the   next
+                                          horizontal tab stop.
+
+            Control-J (Control-Enter)     When the  cursor  is in  the  quote
+                                          window, this key  allows the  Sysop
+                                          to search  the quote  buffer for  a
+                                          text  string.     When   searching,
+                                          pressing Control-J  again  after  a
+                                          instance of the  specified text  is
+                                          found  will  search  for  the  next
+                                          instance of the same text string.
+
+            Control-K                     Closes the  quote window  if it  is
+                                          opened.
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 26
+       ----------------------------------------------------------------------
+
+            Control-L                     Repaints the entire  screen.   Used
+                                          when line  noise causes  distortion
+                                          of the screen display.
+
+            (Enter)   (Enter)             Moves the cursor  to the  beginning
+                                          of the next line.  If the cursor is
+                                          not at the  end of  the line  while
+                                          insert mode is active, the rest  of
+                                          the line is moved down to the  next
+                                          line.  A reformat is possible.
+
+            Control-N                     Toggles line draw  mode.  The  line
+                                          draw mode  indicator  is  displayed
+                                          where  the  insert/overwrite   mode
+                                          indicator is normally located.
+
+            Control-O (ESC)               Activates the editing menu.
+
+            Control-P (End)               Moves the cursor to the next column
+                                          past the end of the current line.
+
+            Control-Q                     Opens the  quote  window  if  quote
+                                          text is  available.   If the  quote
+                                          window  is  open,  Control-Q   will
+                                          switch between  the message  window
+                                          and the quote window.
+
+            Control-R (PgUp)              Moves the cursor up one screen.
+
+            Control-S (Left)              Moves the cursor one column to  the
+                                          left.
+
+            Control-T                     Deletes the  word to  the right  of
+                                          the cursor,  possibly  causing  the
+                                          paragraph to be reformatted.
+
+            Control-U                     Inserts  deleted  lines  from   the
+                                          scrap buffer into the message text.
+
+            Control-V (Insert)            Toggles insert mode.
+
+            Control-W (Home)              Moves the cursor  to the  beginning
+                                          of the current line.
+
+            Control-X (Down)              Moves the cursor one row down.
+
+            Control-Y (Alt-D)             Deletes the  current  line  to  the
+                                          scrap buffer.
+
+            Control-Z (ESC, S)            Saves  the  message  and  exit  the
+                                          editor.
+
+                      (Control-Home)      Moves the cursor to the top row  of
+                                          the editing window.
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 27
+       ----------------------------------------------------------------------
+
+                      (Control-End)       Deletes the text  from the  current
+                                          cursor position to  the end of  the
+                                          line.
+
+                      (Control-PgUp)      Moves the cursor  to the  beginning
+                                          of the message.
+
+                      (Control-PgDn)      Moves the cursor to the end of  the
+                                          message.
+
+                      (Alt-X)             Activates the editing menu.
+
+
+                                     Sysop Keys
+
+       The following  keystrokes  allow  the Sysop  to  control  the  current
+       editing session.  They are only  available to the Sysop when in  local
+       mode.
+
+                      (Alt-S)             Setup screen  colors.    A  box  is
+                                          displayed that allows the Sysop  to
+                                          configure   the   current    screen
+                                          colors.  Normal execution continues
+                                          while the  box displayed,  allowing
+                                          colors to  be  configured  while  a
+                                          user remains on-line.
+
+                      (Alt-H)             Allows the Sysop to disconnect  the
+                                          current user.  The user is  allowed
+                                          to  continue   editing  until   the
+                                          selection is made.  A  confirmation
+                                          dialog is displayed.
+
+                      (Alt-J)             Shells to  DOS.   The  editor  will
+                                          attempt  to  swap  itself  out   of
+                                          memory using XMS, EMS or disk.   If
+                                          the swap  cannot be  performed,  an
+                                          error message is displayed.
+
+                      (Alt-U)             Toggles user  input.    The  remote
+                                          keyboard can  be disabled  allowing
+                                          local input only.
+
+                      (Alt-A)             Displays  operational   information
+                                          about GEdit, including the version,
+                                          multitasker in use, BBS in use  and
+                                          registration information.
+
+                      (Alt-Minus)         Subtracts  one   minute  from   the
+                                          user's time remaining.
+
+                      (Alt-Equal)         Adds one minute to the user's  time
+                                          remaining.
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 28
+       ----------------------------------------------------------------------
+
+                      (Alt-K)             Displays the  text associated  with
+                                          the programmable function keys.
+
+                      (Alt-M)             Invokes the  programmable  function
+                                          key  editor  dialog.    Allows  the
+                                          Sysop to  modify the  function  key
+                                          macros.  For more information,  see
+                                          the   programmable   function   key
+                                          section.
+
+                      (Shift-F1) through
+                      (Shift-F10)         Select which  panel of  the  status
+                                          bar should be displayed.  Note that
+                                          displaying the status bar in  local
+                                          mode  may   partially   cover   the
+                                          editing window.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 29
+       ----------------------------------------------------------------------
+
+
+                             Programmable Function Keys
+
+       The function keys (F1 through F12)  can be programmed to transmit  key
+       sequences to the editor.  The  function key strings are stored in  the
+       same directory as GEDIT.EXE  and is available to  all nodes using  the
+       same GEDIT.EXE file.
+
+       The function keys are edited using  the function key editor, which  is
+       displayed by  pressing Alt-M  while GEdit  is running.   A  dialog  is
+       displayed containing  the twelve  function keys  and their  associated
+       strings.
+
+       When entering  function key  strings,  the following  characters  have
+       special meaning.  They are translated to the indicated function.
+
+            |    send the [Enter] key
+
+            ~    Begin control sequence using the next character
+
+                 ~    send a tilde (~) character
+
+                 |    send a pipe (|) character
+
+                 !    shell to DOS
+
+                 B    send a tab character
+
+                 >    send a cursor right
+
+                 <    send a cursor left
+
+                 ^    send a cursor up
+
+                 V    send a cursor down
+
+                 }    send a delete to end of line
+
+                 S    save message and exit
+
+                 #    save message and exit
+
+                 U    insert _message from_ name
+
+
+
+
+
+
+
+
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 30
+       ----------------------------------------------------------------------
+
+
+                                     Appendix A
+
+
+                 The QuickBBS-style MSGTMP External Editor Interface
+
+       GEdit uses the QuickBBS-style MSGTMP interface to communicate with the
+       BBS.  GEdit uses  a temporary text file  called MSGTMP (no  extension)
+       which must be  located in  the current directory.   If  the caller  is
+       replying to a message,  the BBS quotes the  original message text  for
+       pasting into the reply and  writes it to the  MSGTMP file.  The  lines
+       should be written to the temporary  text file separated by a  carriage
+       return/line feed sequence.  All quote information and prefixes  should
+       be added before writing to the file.
+
+       Once the user has finished editing the message text, GEdit writes  the
+       text to the same MSGTMP file, first erasing any existing file.   GEdit
+       inserts soft carriage returns (ASCII 141)  in the file when the  lines
+       are wrapped and hard  carriage returns (ASCII 13,  ASCII 10) when  the
+       caller actually hits the [Enter] key.
+
+       The BBS must  call GEdit with  several command line  parameters.   The
+       required parameters are shown  below and must be  on the command  line
+       exactly as shown.
+
+                    GEDIT.EXE <port> <baud> <timeLeft> <inActive>
+
+            <port>         the communications port number.   A value  of
+                           "1" indicates COM1, "2" indicates COM2,  etc.
+                           A value of "0" places GEdit in local mode.
+
+            <baud>         the callers baud rate.  This is the  computer
+                           to modem speed, not  the carrier line  speed.
+                           If a baud rate of  "0" is passed, local  mode
+                           operation is assumed.
+
+            <timeLeft>     the number of minutes remaining for the  user
+                           on this call.
+
+            <inActive>     the number of seconds the user is allowed  to
+                           stay idle  without  pressing  any  keystrokes
+                           before the system will disconnect.
+
+       When GEdit exits, an  error level will  be returned to  the BBS.   The
+       following values are possible:
+
+            0              Normal  exit,  the  edited  message  text  is
+                           stored in MSGTMP and is ready to be  imported
+                           into the message base by the BBS.
+
+            1              Abnormal exit,  the user  either aborted  the
+                           message or the saved message did not  contain
+                           any text.  Either way, the message should not
+                           be saved and the entry function should abort.
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 31
+       ----------------------------------------------------------------------
+
+            2              Abnormal exit,  the  user time  remaining  of
+                           idle time-out period expired.  The BBS should
+                           disconnect the user.
+
+       If GEdit returns  to the BBS  with the carrier  signal low, it  should
+       assume the  caller  was disconnected  and  discard the  message  text.
+       GEdit should be  called directly; another  copy of COMMAND.COM  should
+       NOT be loaded.  This is must faster and takes less memory.
+
+       The BBS should only  allow users with either  ANSI or AVATAR  graphics
+       capability to access GEdit.  GEdit uses VT-100, ANSI and AVATAR screen
+       control codes to format all screen displays.
+
+       GEdit will use  the FOSSIL driver  (revision 5) if  installed.  If  no
+       FOSSIL driver is found, GEdit will attempt to open the port using it's
+       own built-in serial routines.  If this fails, an error message will be
+       displayed and GEdit will not load.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 32
+       ----------------------------------------------------------------------
+
+
+                                     Appendix B
+
+
+                              Troubleshooting Problems
+
+       GEdit doesn't  seem to  be recognizing  what  type of  bulletin  board
+       software I am using?
+
+            Make sure that the correct BBS environment variable is set to the
+            system path of the BBS.   If it is set,  make sure that no  other
+            BBS environment variables are set that would indicate another BBS
+            package  in  use.    If  you  require  multiple  BBS  environment
+            variables, you must use the  GEDIT environment variable to  force
+            GEdit to assume a specific software package.
+
+       GEdit says that it is an  unregistered evaluation version, but I  have
+       registered and received my key.
+
+            Your registration key should be renamed to "GEDIT.KEY" and should
+            be located in the same directory as the "GEDIT.EXE" program file.
+            Make sure that  the executable you  are calling from  the BBS  is
+            indeed the one that has the corresponding key file located in the
+            same directory.
+
+            GEdit key files are 606 bytes in length and can be displayed from
+            the DOS prompt using the  TYPE command.  If  your key is not  606
+            bytes, your key file has been corrupted.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 33
+       ----------------------------------------------------------------------
+
+
+                                     Appendix C
+
+
+                          The DOS Application Class Library
+
+       Over the  past nine  months  we have  developed  a class  library  for
+       developing DOS-based C++ applications.   The library contains a  large
+       collection of programming tools.
+
+       The main library contains full  implementations of the common  utility
+       classes including static and dynamic linked-lists, strings  (including
+       Pascal string support), points, and rectangles.  Flexible input device
+       support for keyboard, mouse and  joystick.  Keyboard messages  include
+       key pressed, keystroke and key released.  A powerful interface to  the
+       system timer, including countdown, countup, and interval timers.  Full
+       background sound support, including compatibility with the BASIC  play
+       command.
+
+       The system event manager provides internal message-based  multitasking
+       similar to  the  architecture of  Microsoft  Windows.   All  processes
+       within an  application are  derived from  a base  instance class,  and
+       processing time is passed from instance  to instance.  Performance  is
+       extremely fast  and  application  flexibility  is  amazingly  easy  to
+       harness in any project.
+
+       The screen library contains support for monochrome and color  screens,
+       including EGA  and VGA  displays.   Support for  non-standard  display
+       modes, including 132 column  modes, is included.   The window  classes
+       are derived  from the  instance class,  giving  each window  it's  own
+       message handler.  Each  window on the screen  is managed by the  frame
+       management functions.
+
+       Once a window is created, it can be written to at any time, regardless
+       of the windows z-order in the window list.  The windows on-screen size
+       can differ  from  the actual  size  of the  associated  buffer,  being
+       smaller or larger.  Buffer size  is limited by memory, window size  is
+       limited by screen  size.  An  on-screen window frame  can be moved  or
+       resized at any time, regardless of  the windows z-order.  Windows  can
+       be borderless or bordered.   Window borders include captions,  scroll-
+       bars, and resize controls.  The mouse  can be used to move and  resize
+       any on-screen window.
+
+       The windowing library also includes an extensible screen saver  class.
+       This class allows you to create  custom screen saver modules that  can
+       be  invoked  automatically  as  keyboard  and  mouse  activity  stops.
+       Modules can be  created to  display progress  information or  whatever
+       else is needed.   The application continues  to function unaware  that
+       the screen saver has been displayed.  As  soon as the user hits a  key
+       or moves the mouse, the original display is restored without requiring
+       any application interruption.   A  few sample  modules, including  the
+       infamous NetWare snake and a moving clock, are included to demonstrate
+       using these classes.
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 34
+       ----------------------------------------------------------------------
+
+       The user interface  library includes pull-down,  pop-up and  cascading
+       menus.  Full mouse  support for the menus  is included, and menus  are
+       independent window instances within the application architecture.   By
+       using system-wide  accelerators,  hot-keys  can be  defined  for  menu
+       options, eliminating  the  need  for  an  application  to  check  each
+       keystroke for a function.
+
+       Dialog boxes are also  part of the interface  library.  Many  controls
+       are supported  in the  dialog manager,  including groups,  edit  boxes
+       (including formatted fields), command  buttons, radio buttons,  check-
+       boxes, list-boxes and combo-boxes.  The dialog manager is part of  the
+       application architecture, and  takes advantage of  many of the  system
+       features.  Convenient predefined dialogs such a message boxes are also
+       included.
+
+       The  communications  library   provides  access  to   many  types   of
+       communication interfaces,  including  interrupt-driven  serial  ports,
+       parallel ports,  a FOSSIL  interface, a  DigiBoard interface,  Network
+       Product Corporation's NCSI serial interface,  and NetWare IPX/SPX.   A
+       base session class  and derived classes  for each communication  types
+       allows code to be  written to a single  class.  The  code can then  be
+       used for any of the derived interface classes, eliminating the need to
+       rewrite or modify code when different interfaces are supported.
+
+       Internal support for decoding  ANSI and AVATAR/0+ emulation  sequences
+       are  included   and  are   100%  compliant   with  the   corresponding
+       specifications.   The  routines  are designed  to  use  the  windowing
+       classes in the window  library, and all output  is optimized for  fast
+       response.
+
+       Protocol classes including Xmodem, Ymodem  and Zmodem, written to  use
+       the base  session  class, are  included  giving the  application  easy
+       access to internal transfer protocols.  Since all of these classes are
+       written for  use  with  the application  class  library,  all  of  the
+       internal multitasking  capabilities  are exploited,  allowing  maximum
+       application flexibility.
+
+       The database library  includes basic  file input  and output  services
+       such as read and write.   Binary and text  files are supported.   File
+       name and path name functions are  included to resolved path names  and
+       verify valid file and path names.
+
+       The record manager is  a B*Tree indexed  record manager allowing  both
+       fixed and variable length records including full indices to be  stored
+       in a single file.  The page-oriented system includes multi-user access
+       and controlled  record and  file locking.   The  system is  reasonably
+       small and very fast.  It uses several of the file and container  class
+       functions from the remainder of the library, keeping code size small.
+
+       The multimedia library includes  classes to control CD-Audio  devices,
+       Adlib, SoundBlaster and ProAudioSpectrum sound  cards.  DMA wave  file
+       playback and recording  functions, as well  as FM  music routines  are
+       included.
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 35
+       ----------------------------------------------------------------------
+
+       The network library  includes support for  NetWare LANs, and  provides
+       access to  a subset  of the  NetWare API.   A  device instance  allows
+       monitoring  of  network   messages  for   interception  and   display,
+       eliminating the  annoying  "white  line message"  that  NetWare  often
+       displays on the bottom line of the screen, locking up your application
+       until the user presses a key.   The message is displayed in a  message
+       box.
+
+       The door interface library allows bulletin  board doors to be  written
+       using  the  class  library,  giving  the  application  access  to  the
+       information necessary to communicate with the user.  The door  library
+       uses the  libraries  own  FOSSIL,  DigiBoard  or  direct  serial  port
+       routines providing maximum flexibility and minimal code size.
+
+       To  help  the  programmer  use  these   tools,  a  number  of   sample
+       applications are included.  All include well commented source code and
+       are easy to understand.
+
+       Announcements will be made  once the library  approaches release.   If
+       you  are  interested  in  more  information,  contact  The  Developers
+       Network, Inc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved
+
+
+       GEdit 2.01                   July 1, 1993                      Page 36
+       ----------------------------------------------------------------------
+
+
+                                        Index
+
+
+       BBS, 9
+          EzyCom, 9, 10, 13
+          ProBoard, 9, 14
+          QuickBBS, 9, 14
+          RemoteAccess, 9, 13
+          SuperBBS, 9, 13
+       BlueWave, 14
+       colors, 20
+       Command-Line, 15
+       DORINFO1.DEF, 12
+       editing window, 16, 20
+       environment variable, 32
+          EZY, 12, 13
+          GEDIT, 12
+          PROBOARD, 12, 13
+          QUICK, 12, 13
+          RA, 12, 13
+          SBBS, 12, 13
+       Function Keys, 29
+       insert mode, 16
+       line drawing mode, 16
+       menu system, 21
+       message subject, 16
+       MSGTMP, 12, 30
+       multitaskers, 11
+          DESQview, 11
+          Microsoft Windows, 11
+          OS/2, 11
+       Networks, 11
+          Lantastic, 11
+          Microsoft Windows for
+          Workgroups, 11
+          NetWare Lite, 11
+          Novell NetWare 386, 11
+       overwrite mode, 16
+       quote, 17
+       Registering, 7
+          Benefits, 7
+          credit card, 7
+          Public (software) Library, 7
+          Registration Form, 8
+          Upgrade, 7
+       Status Bar, 20
+       Table of Contents, 3
+       The Developers Network BBS, 6
+       warning beep, 16
+       windows, 19
+          Dialog Boxes, 19
+          Moving, 19
+          Resizing, 19
+
+       ----------------------------------------------------------------------
+       COPYRIGHT 1992,93 The Developers Network, Inc.  All Rights Reserved

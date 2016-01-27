@@ -1,0 +1,16 @@
+ALFREDO COLOMBINI
+PSY
+28/11/93
+HEY!
+1
+1
+Que tal Dario, otra cosita, en el menu de los msgs cuando corro el caracter
+þ me aparece una l¡nea m s abajo de lo que deberia.
+
+Sale algo asi:
+
+ Leer mensaje
+þ
+
+Alf()  
+ 
