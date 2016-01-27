@@ -9,7 +9,7 @@ Debido a que los códigos ANSI eran capaces de reposicionar el cursor en cualqui
 
 El prototipo fue programado en QBasic, y contaba con un sistema de validación de usuarios, repositorio de archivos con capacidad de transmisión xmodem y zmodem, chat y mensajería privada. Nunca salió de su etapa experimental, ni se mantuvo conectado más de un par de veces.
 
-Los siguientes archivos fueron rescatados de un disco de 3 1/2 pulgadas. Ingoro si se trataba de la versión más reciente del desarrollo. Asimismo, desconozco si es posible ponerlo en funcionamiento con las herramientas de QBasic modernas, y es posible que requiera la presencia física o virtual de un modem para inicializar correctamente.
+Los siguientes archivos fueron rescatados de un disco de 3 1/2 pulgadas. Ignoro si se trataba de la versión más reciente del desarrollo. Asimismo, desconozco si es posible ponerlo en funcionamiento con las herramientas de QBasic modernas, y es posible que requiera la presencia física o virtual de un modem para inicializar correctamente.
 
 Pueden encontrarse capturas PNG del layout en ANSI en la carpeta `screenshots`.
 
